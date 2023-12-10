@@ -83,7 +83,7 @@ function App() {
   return (
     <div className="App">
       <div className="title">
-        <img id="Logo" src={logo} />
+        <img id="Logo" alt="logo" src={logo} />
       </div>
       <div className="target">Target: 0:{target}</div>
       <div className="game">

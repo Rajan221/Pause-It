@@ -28,7 +28,7 @@ function App() {
   const startAndStop = () => {
     setIsRunning(!isRunning);
     if (milliseconds !== 0) {
-      if (Math.abs(milliseconds === Math.abs(target))) {
+      if (Math.abs(target) === Math.abs(milliseconds)) {
         setMessage("Won👏👏😎");
         if (checked) {
           setNewTarget(setTarget());

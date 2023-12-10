@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "./Comps/Logo.png";
+import logo from "./Comps/Text.png";
 import "./App.css";
 
 function setTarget() {
@@ -11,6 +11,8 @@ function App() {
   const [target, setTargetValue] = useState(setTarget());
   const [message, setMessage] = useState("Lets Start");
   const [isRunning, setIsRunning] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     let intervalId;
@@ -21,14 +23,16 @@ function App() {
   }, [isRunning, time]);
 
   const seconds = Math.floor((time % 6000) / 100);
-  const milliseconds = time % 100;
+  let milliseconds = time % 100;
 
   const startAndStop = () => {
     setIsRunning(!isRunning);
     if (milliseconds !== 0) {
       if (target === milliseconds) {
         setMessage("Won👏👏😎");
-        setNewTarget();
+        if (checked) {
+          setNewTarget(setTarget());
+        }
       } else {
         setMessage("Try Again😣😣");
       }
@@ -42,6 +46,38 @@ function App() {
 
   const setNewTarget = () => {
     setTargetValue(setTarget());
+  };
+
+  const handleChange = () => {
+    if (checked) {
+      console.log("Unchecked");
+      setChecked(false);
+    } else {
+      console.log("checked");
+      setChecked(true);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    // Update the state with the new input value
+    setInputValue(event.target.value);
+  };
+
+  const handleSet = () => {
+    console.log("Clicked");
+    const regex = /^[0-9]*$/;
+
+    if (
+      inputValue > 99 ||
+      inputValue <= 0 ||
+      inputValue === "" ||
+      !regex.test(inputValue)
+    ) {
+      setMessage("Please Set Ethical Value");
+      alert("Error Occured");
+    } else {
+      setTargetValue(inputValue);
+    }
   };
 
   return (
@@ -59,7 +95,7 @@ function App() {
           </p>
         </div>
 
-        <div className="message">{message}</div>
+        <div className="message"> {message}</div>
 
         <div className="pausebtn">
           {" "}
@@ -79,11 +115,26 @@ function App() {
           </button>
           <br />
           <div id="autoDiv">
-            <label className="autoReset">Auto Reset:</label>
+            <label className="autoReset">Auto set new Target:</label>
             <label class="switch">
-              <input type="checkbox" />
+              <input type="checkbox" onChange={handleChange} />
               <span class="slider round"></span>
             </label>
+          </div>
+          <div id="setDiv">
+            <label className="autoReset">Custom Target: </label>
+
+            <input
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              placeholder="Set Target..."
+              className="ownTarget"
+            />
+
+            <button className="ownTargetButton" onClick={handleSet}>
+              Set
+            </button>
           </div>
         </div>
       </div>

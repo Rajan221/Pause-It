@@ -1,3 +1,8 @@
+:root {
+  --fontSize: 2.6rem;
+  --themeColor: #2196f3;
+}
+
 .App {
   text-align: center;
   background-color: #333;
@@ -5,6 +10,7 @@
   color: wheat;
   font-size: 50px;
   user-select: none;
+  overflow-x: hidden;
 }
 
 .title {
@@ -15,6 +21,21 @@
 
 #Logo {
   height: 200px;
+}
+
+.target,
+.game,
+.message {
+  margin-top: -5vh;
+  font-size: var(--fontSize);
+}
+
+.stopwatch-time {
+  font-weight: bold;
+}
+
+.pausebtn {
+  margin-top: 5vh;
 }
 
 .stopwatch-button {
@@ -30,21 +51,24 @@
 }
 
 .new {
-  font-size: 30px;
+  font-size: 25px;
   background-color: #222;
   border: none;
   color: white;
-  padding: 20px;
   border-radius: 10px;
   height: 100px;
   width: 200px;
   margin: 10px;
 }
 
-.autoDiv {
-  margin: auto;
+#autoDiv {
   height: 100px;
+  width: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .autoReset {
@@ -113,4 +137,87 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* slider end */
+
+/* own target */
+#setDiv {
+  margin-top: -3vh;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.ownTarget {
+  height: 3vh;
+  width: 10vw;
+}
+
+.ownTarget:focus {
+  outline: none;
+}
+
+.ownTargetButton {
+  height: 4vh;
+  font-size: 1.2rem;
+  background-color: var(--themeColor);
+  color: wheat;
+  border: 0.5px solid #333;
+  border-radius: 5px;
+}
+
+.ownTargetButton:hover {
+  background-color: #5aabed;
+}
+
+/* for mobiles */
+
+@media only screen and (max-width: 600px) {
+  #Logo {
+    max-width: 80vw;
+    height: auto;
+    margin-top: -15vh;
+  }
+  .target,
+  .game,
+  .message {
+    margin-top: -5vh;
+    font-size: 2.7rem;
+  }
+
+  .pausebtn {
+    margin-top: 5vh;
+  }
+
+  .ownTarget {
+    height: 3vh;
+    width: 20vw;
+  }
+}
+
+@media only screen and (max-height: 800px) {
+  #Logo {
+    max-width: 60vw;
+    height: auto;
+  }
+  .target,
+  .game,
+  .message {
+    margin-top: -5vh;
+    font-size: 2.4rem;
+  }
+
+  .pausebtn {
+    margin-top: 5vh;
+  }
+
+  .ownTarget {
+    height: 3vh;
+    width: 20vw;
+  }
 }

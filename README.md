@@ -1,3 +1,7 @@
+Project Preview
+![image](https://github.com/Rajan221/Pause-It/assets/84500592/4cc55ae1-b659-442d-b111-429b8cca4326)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
